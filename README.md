@@ -5,7 +5,12 @@ I analyzed the delivery data and built Machine Learning models to predict failed
 ## 1. What the Data Tells Us (Key Discoveries)
 
 * **Distance is not the problem, but it controls the price:** The data shows that packages fail on short trips and long trips. Distance is not the reason for failures. However, the price is *only* calculated by distance (1.0 correlation). We do not charge extra for hard work, like driving in bad weather.
-* **Wrong time estimates (The Delivery Gap):** The expected time and the real delivery time are very different. Packages are often late. But even when a package arrives **too early**, it is a problem: the customer is maybe not at home to take it. Both situations make the customer unhappy and lead to bad ratings.
+* * **The ETA Forecasting Problem (The Delivery Gap):** The data reveals a massive flaw in our system: Over 65% of all packages arrive *much earlier* than expected. This massive gap proves our internal time forecasting is completely inaccurate. Arriving "too early" is actually a hidden logistical nightmare:
+    * **For the Customer:** They are often not at home or, for larger deliveries (like pallets), lack the personnel and equipment ready to unload. This creates security risks (theft/weather) and lowers satisfaction.
+    * **For the Company:** It causes warehouse chaos (goods arriving before space is cleared) and reveals highly inefficient route planning (trucks are driving with too much slack and could carry more).
+    * **For the Driver:** If a customer cannot accept an early package, the driver faces double work (re-loading and re-delivering the next day), which wastes time, fuel, and ruins their success metrics.
+    * **Conclusion:** We desperately need smarter ETA predictions to optimize our warehouse operations, route efficiency, and driver schedules accurately.
+
 * **High risk with bad weather and small vehicles:** I created new data features and found a big problem: Small vehicles (scooters, bikes) driving in bad weather (storm, rain) fail very often. 
 * **Failures are rare:** Only about 5% of all deliveries fail. Because it happens so rarely, our computer models need richer and better data to predict it perfectly.
 
